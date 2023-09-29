@@ -1,0 +1,415 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>The Bend</title>
+    <!-- Cách thay đổi nút hiện ở trên chỗ title ko phải là hình trái đất nữa ---) thay vào chỗ href  -->
+    <!-- <link rel="icon" href="./assets/img/places/music_1.png" type="image/x-icon"/> -->
+    <!-- Tại vì file index đứng ngang cấp với file assets nên chúng ta thêm dấu ./ tức là ngang cấp -->
+    <link rel="stylesheet" href="./assets/css/style.css">
+    <!-- Thằng responsive phải đặt bên dưới thằng style css này để nó hiểu rằng thằng này là thằng mới vậy nên nó sẽ được ưu tiên hơn -->
+    <link rel="stylesheet" href="./assets/css/responsive.css">
+    <link rel="stylesheet" href="/assets/fonts/themify-icons/themify-icons.css">
+</head>
+
+<body>
+    
+    <!-- Tạo ra 1 thẻ div chứa tất cả các content của chúng ta  -->
+    <!-- Thông thường các thành phần chính của trang website ngta thường đặt là id -->
+    <!-- 
+        Thông thường thường đặt tên là:
+            Wrapper: thành phần chứa, bao bọc
+            Main: thành phần chính
+            App: được hiểu là ứng dụng - thể hiện là chứa cả cái ứng dụng của chúng ta
+    -->
+    
+    <div id="main">
+
+        <div id="header">
+            <!-- Begin: Nav -->
+           <ul id="nav">
+                <!-- Dùng thẻ a là vì mỗi thằng này phải ấn vào được - mỗi li ko thì ko khác gì 1 chữ cái -->
+                <!-- Chỉ cần đặt một id vào trong 1 thẻ nào đó - xog đưa #id đó vào thẻ a href thì nó sẽ link tới được thẻ đó -->
+                <li><a href="#">Home</a></li>
+                <li><a href="#band">Bend</a></li>
+                <li><a href="#tour">Tour</a></li>
+                <li><a href="#contact">Contact</a></li>
+                <li> 
+                    <a href="#">
+                        More
+                        <!-- Dùng thẻ i: nó được hiểu là thẻ dùng làm chữ in nghiên nhưng cũng có thể dùng làm thẻ để hiện được icon -->
+                        <!-- Đặt 1 tên nữa ở trước tại vì --) sau này nhỡ đâu có thể đổi tên class kia thì chúng ta ko phải tìm lại để css -->
+                        <i class="nav-icon ti-angle-down"></i>
+                    </a>
+                    <ul class="subnav">
+                        <li><a href="#">Merchandise</a></li>
+                        <li><a href="#">Extras</a></li>
+                        <li><a href="#">Media</a></li>
+                    </ul>
+                </li>
+           </ul> 
+            <!-- End: Nav -->
+
+            <!-- Begin: Seach button -->
+            <div class="search-btn">
+                <i class="search-icon ti-search"></i>
+            </div>
+
+            <div id="mobile-menu" class="mobile-menu-btn">
+                <i class="ti-menu"></i>
+            </div>
+            <!-- End: Seach button -->
+        </div>
+        
+        <div id="slider">
+            <!-- 
+                Trong Css mà cứ có giao diện ông này đè nên ông kia: thì cứ sử dụng position: relative, absolute,....để làm
+             -->
+            
+             <!-- 
+                Muốn hiển thị ảnh ko bị vỡ trên cửa sổ trình duyệt ta phải tuân thủ như sau:
+                    +) Hình ảnh luôn phải tuân thủ theo 1 nguyên tắc: phải hiển thị đúng theo cái tỉ lệ gốc của bức ảnh
+                    +) Ví dụ tỉ lệ gốc bức ảnh là: 1200 x 600
+                        +) Thì ta phải làm sao khi hiển thị ảnh ra chiều cao luôn luôn bằng 50% chiều dài của bức ảnh thì ảnh sẽ ko bị vỡ
+                    +) Ví dụ tỉ lệ gốc bức ảnh kp là số chẵn dễ tính như kia thì ta sẽ có công thức như sau:
+                        +) (cao / dài) * 100      ---) như vậy sẽ biết được chiều cao chiếm bao nhiêu % so với chiều dài
+              -->
+            <div class="text-content">
+                <h3 class="text-heading">Chicago</h2>
+                <div class="text-descript">Thank you, Chicago - A night we won't forget.</div>
+            </div>
+        </div>
+ 
+        <div id="content">
+             
+            <!-- The Band - About section: phần nội dung -->
+            <div id="band" class="content-section">
+                <h2 class="section-heading">THE BAND</h2>
+                <p class="section-sub-heading">We love music</p>
+                <p class="about-text">
+                    We have created a fictional band website. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
+                </p>
+                <div class="member-list">
+                    <!-- Member: thành viên -->
+                    <div class="colum s-colum colum-third text-center member-item">
+                        <p class="member-name">Name</p>
+                        <img src="./assets/img/image1.jpg" alt="Name" class="member-img">
+                    </div>
+                    <div class=" colum s-colum colum-third text-center member-item">
+                        <p class="member-name">Name</p>
+                        <img src="./assets/img/image1.jpg" alt="Name" class="member-img">
+                    </div>
+                    <div class="colum s-colum colum-third text-center member-item">
+                        <p class="member-name">Name</p>
+                        <img src="./assets/img/image1.jpg" alt="Name" class="member-img">
+                    </div>
+                    <div class="clear"></div>
+                </div>
+            </div>
+
+            <!-- TOUR DATES - Tour Section: phần các chuyến du lịch -->
+            <div id="tour" class="tour-section">
+                <!-- 
+                    Quy tắc đổ nền: +) chỉ đổ được từ thằng padding vào hoặc là các phần có thể nhìn thấy - chứ margin ta ko thể đổ được
+                                    +) Vậy nên content-section mà CSS cho nó muốn chiều dài 100% màu đen thì ko được tại vì nó có margin 
+                                    --) Vậy nên cách duy nhất tạo 1 thẻ div khối bao quanh nó là được
+                 -->
+                <div class="content-section">
+                    <h2 class="section-heading text-white">TOUR DATES</h2>
+                    <p class="section-sub-heading text-white">Remember to book your tickets!</p>
+                    
+                    <!-- tickets-list: danh sách vé -->
+                    <ul class="tickets-list">
+                        <li class="tickets-item">
+                            September 
+                            <span class="Soul-out">
+                                Sold out
+                            </span> 
+                        </li>
+                        <li class="tickets-item">
+                            October 
+                            <span class="Soul-out">
+                                Sold out
+                            </span> 
+                        </li>
+                        <li class="tickets-item">
+                            November 
+                            <span class="Quantity">
+                                3
+                            </span>
+                        </li>
+                    </ul>
+
+                    <!-- plcaes-list: danh sách vị trí, địa điểm du lịch -->
+                    <div class="row places-list">
+                        <div class="colum colum-third s-colum place-item">
+                            <img src="/assets/img/places/place1.jpg" alt="New York" class="place-img">
+                            <div class="place-body">
+                                <h3 class="place-heading">New York</h3>
+                                <p class="place-time">Fri 27 Nov 2016</p>
+                                <p class="place-descretion">Praesent tincidunt sed tellus ut rutrum sed vitae justo</p>
+                                <!-- Dấu # được hiểu là link tới chính trang đó thôi -->
+                                <!-- Đặt tên class: có chữ đầu là js để dễ có thể phân biệt được đâu là class để CSS, đầu là class về js -->
+                                <button class="place-buy-btn js-buy-btn">Buy Tickets</button>
+                            </div>
+                        </div>
+                        <div class="colum colum-third s-colum place-item">
+                            <img src="/assets/img/places/place2.jpg" alt="Paris" class="place-img">
+                            <div class="place-body">
+                                <h3 class="place-heading">Paris</h3>
+                                <p class="place-time">Sat 28 Nov 2016</p>
+                                <p class="place-descretion">Praesent tincidunt sed tellus ut rutrum sed vitae justo.</p>
+                                <!-- Dấu # được hiểu là link tới chính trang đó thôi -->
+                                <!-- Đặt tên class: có chữ đầu là js để dễ có thể phân biệt được đâu là class để CSS, đầu là class về js -->
+                                <button class="place-buy-btn js-buy-btn">Buy Tickets</button>
+                            </div>
+                        </div>
+                        <div class="colum colum-third s-colum place-item">
+                            <img src="/assets/img/places/place3.jpg" alt="San Francisco" class="place-img">
+                            <div class="place-body">
+                                <h3 class="place-heading">San Francisco</h3>
+                                <p class="place-time">Sun 29 Nov 2016</p>
+                                <p class="place-descretion">Praesent tincidunt sed tellus ut rutrum sed vitae justo.</p>
+                                <!-- Dấu # được hiểu là link tới chính trang đó thôi -->
+                                <!-- Đặt tên class: có chữ đầu là js để dễ có thể phân biệt được đâu là class để CSS, đầu là class về js -->
+                                <button class="place-buy-btn js-buy-btn">Buy Tickets</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+ 
+            <!-- CONTACT SECTION -->
+            <div id="contact" class="content-section">
+                <h2 class="section-heading">CONTACT</h2>
+                <p class="section-sub-heading">Fan? Drop a note!</p>
+                
+                <div class="row contact-content">
+                    <!-- Phần info: thông tin liên hệ-->
+                    <div class="colum colum-half contact-info colum-responsive ml-10 ">
+                        <!-- Đặt thêm 1 class là: contact-info tức là phần này là thông tin liên hệ --) phải tạo ra thêm 1 class để chúng ta CSS --) chứ ko được CSS vào class chung kia -->
+                        <p><i class="ti-location-pin"></i>Chicago, US</p>
+                        <p><i class="ti-mobile"></i>Phone: <a href="tel: ">+00 151515</a></p>
+                        <p><i class="ti-email"></i>Email: <a href="mailto: ">mail@mail.com</a></p>
+                    </div>
+
+                    <!-- Phần info-form: phần để liên hệ -->
+                    <div class="colum colum-half contact-form colum-responsive mt-16">
+                        <form action="">
+                            <div class="row">
+                                <div class="colum colum-half contact-colum colum-responsive">
+                                    <input type="text" name="" placeholder="Name" required id="" class="form-control">
+                                </div>
+                                <div class="colum colum-half contact-colum colum-responsive">
+                                    <!-- Cách đặt tên input là: ngta thường đặt tên các class là form-control -->
+                                    <input type="email" name="" placeholder="Email" required id="" class="form-control">
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="colum colum-full">
+                                    <!-- Cách đặt tên input là: ngta thường đặt tên các class là form-control -->
+                                    <input type="text" name="" required placeholder="Message" id="" class="form-control">
+                                </div>
+                            </div>
+                            <input class="contact-btn" type="submit" value="SEND">
+                            <!-- Đặt vào thẻ input kiểu require tức là: phải nhập hết các giá trị trong ô input và đúng vs kiểu type mới được - còn ko nó sẽ xuất ra yêu cầu lỗi -->
+                        </form>
+                    </div>
+
+                </div>
+            </div>
+
+ 
+            <!-- Map Section -->
+            <div class="map-section">
+                <img src="./assets/img/places/map.jpg" alt="">
+            </div>
+            
+        </div>
+
+        <div id="footer">
+            <!-- (so sồ) socials list: mạng xã hội -->
+            <div class="socials-list">
+                <a href=""><i class="ti-facebook social-icon"></i></a>
+                <a href=""><i class="ti-instagram social-icon"></i></a>
+                <a href=""><i class="ti-apple social-icon"></i></a>
+                <a href=""><i class="ti-pinterest social-icon"></i></a>
+                <a href=""><i class="ti-twitter social-icon"></i></a>
+                <a href=""><i class="ti-linkedin social-icon"></i></a>
+            </div>
+            <!-- copyright: bản quyền -->
+            <p class="copyright">Powered by <a href="#">w3.css</a></p>
+        </div>
+
+    </div>
+
+    <!-- Phần modal: có thể viết bên ngoài thằng main này tại vì nó có position: fixed  --) nên nó tương quan với cửa sổ trình duyệt -->
+    <div class="modal js-modal">
+        <div class="modal-container js-modal-container">
+
+            <!-- Phần header: Phần đầu -->
+            <header class="modal-header">
+                <i class="modal-header-bag ti-bag"></i>
+                Tickets
+            </header>
+
+            <!-- Tạo dấu x bên phải header -->
+            <div class="modal-close">
+                <i class="modal-header-close js-modal-close ti-close"></i>
+            </div>
+
+            <!-- Phần body: Phần thân -->
+            <div class="modal-body">
+                <!-- Tạo nhãn ở trên -->
+                <label for="How many" class="modal-label">  
+                    <!-- For: này chi làm việc với id  --) đưa cái id nó cần liên kết tới thì mỗi khi ấn nó sẽ chạy tới cái mà nó liên kết -->
+                    <i class="ti-shopping-cart"></i>
+                    Tickets, $15 per person
+                </label>
+                <!-- Tạo input ở dưới -->
+                    <!-- placehoder: tức là ghi được chữ ở trong khi nào điền chữ gì vào sẽ tự mất -->
+                <input id="How many" type="text" class="modal-input" placeholder="How many?">
+                
+                <!-- Tạo nhãn ở trên -->
+                <label for="Enter email" class="modal-label">
+                    <!-- For: này chi làm việc với id  --) đưa cái id nó cần liên kết tới thì mỗi khi ấn nó sẽ chạy tới cái mà nó liên kết -->
+                    <i class="ti-user"></i>
+                    Send To
+                </label>
+                <!-- Tạo input ở dưới -->
+                    <!-- placehoder: tức là ghi được chữ ở trong khi nào điền chữ gì vào sẽ tự mất -->
+                <input id="Enter email" type="email" class="modal-input" placeholder="Enter email">
+
+                <!-- Tạo chữ Pay -->
+                <button class="modal-button">
+                    Pay
+                    <i class="ti-check"></i>
+                </button>
+            </div>
+
+            <!-- Phần footer: Phần cuối -->
+            <footer class="modal-footer">
+                <!-- Bên trái footer -->
+                <button class="footer-close">
+                    Close
+                    <i class="ti-close"></i>
+                </button>
+
+                <!-- Bên phải footer -->
+                <p class="footer-need">
+                    Need
+                    <a href="#" class="footer-help">help?</a>
+                </p>
+            </footer>
+
+        </div>
+    </div>
+
+
+    <!-- Phần javascript -->
+    <script>
+        // Const khai báo tạo ra 1 hằng
+        // doucument là đại diện cho 1 trang web --) nên muốn lấy cái gì phải đi qua document
+        // query...All nó lấy ra tất cả các class là js-buy-tickets
+        const buyBtns = document.querySelectorAll('.js-buy-btn')
+        // khai báo 1 hằng modal -) query truy vấn tới tất cả các class là .modal
+        const modal = document.querySelector('.js-modal')
+        const modalClose = document.querySelector('.js-modal-close')
+        // Tạo ra 1 hằng để làm việc khi ấn modal container sẽ ko bị đóng ---> đây được gọi là hiệu ứng nổi bọt  ---> mk làm như này là để tắt cái tính năng này đi
+        const modalContainer = document.querySelector('.js-modal-container')
+
+
+        // Tạo ra 1 hàm để thực hiện nhiệm vụ: mỗi lần click lắng nghe thì nó sẽ được làm công việc gì
+        // Hàm này thực hiện công việc show ra modal
+        function showBuyTickets() {
+            // hàm alert: là hàm mặc định có ở trên trình duyệt
+            // alert("SHOW")
+
+            // Tức là: khi click vào buyBtn nó sẽ gọi hàm showBuyTickets và trong showBuyTickets nó sẽ thực hiện class open kia
+            // open kia đã được css rồi ở bên trên
+            modal.classList.add('open')
+        }
+
+        // Hàm này thực hiện công việc ấn vào nút x thì nó sẽ tắt modal đi
+        function hideBuyTickets() {
+            modal.classList.remove('open')
+        }
+
+        // Tạo ra 1 biến mới là buyBtn nó sẽ lấy ra các nút lần lượt trong danh sách buyBtns của chúng ta
+        for (const buyBtn of buyBtns) {
+            // addEnventListener là: thêm 1 thằng để lẳng nghe thằng --) click  --) sau khi click rồi thì cái thằng hàm kia sẽ được gọi ra
+            // khi gọi được hàm kia ra rồi nó sẽ thực hiện các công việc trong hàm showBuyTickets
+            buyBtn.addEventListener('click', showBuyTickets)
+        }
+
+        // Cái này nó chỉ là 1 nút ko phải là 1 danh sách vậy nên chỉ cần gọi thẳng nó ra luôn ko cần vòng for
+        modalClose.addEventListener('click', hideBuyTickets)
+
+        // Thằng modal này là thằng ôm chọn bên ngoài đấy khi ấn vào khoảng ko của nó thì modal sẽ tự đóng nhưng cần phải có vài bước fix hiện tượng nổi bọt bên dưới nữa
+        modal.addEventListener('click', hideBuyTickets)
+
+        // fix tính chất nổi bọt của nó - khi click vào modal-container thì sẽ làm gì và như thế nào
+        // khi viết thẳng function vào thì ko cần đặt tên cho function nó sẽ tự hiểu để mà truy vấn tới 
+        // Biến event ở đây là: khi mỗi lần click vào 1 sự kiện diễn ra thì nó sẽ trả về cho mình 1 cái event
+        modalContainer.addEventListener('click', function (event){
+            // stopPropagation: tức là ngừng sự kiện nổi bọt lại
+            // ngừng từ đâu: ngừng từ thằng modalContainer
+            event.stopPropagation()
+        })
+
+
+
+        // Responsive JS với Mobile
+        var header = document.getElementById('header');
+        var mobileMenu = document.getElementById('mobile-menu');
+        // Tạo ra 1 biến lấy chiều cao của thằng header xog bắt đầu đi so sánh nó 
+        var headerHeight = header.clientHeight;
+
+        // Sự kiện lắng nghe việc click  --- Đóng/mở mobile menu
+        mobileMenu.onclick = function () {
+            // console.log(header.clientHeight);
+            // Kiểm tra xem header nó có đang mở hay không
+            var isClosed = header.clientHeight === headerHeight;
+            // Tức là khi mk click vào nếu nó đang đóng thì sẽ auto mở nó ra - còn ngược lại khi mk click vào mà nó đang mở sẵn r í thì mk sẽ cho nó là null tức là đóng nó lại
+            // null tức là giá trị vô định - nó sẽ bằng vs kích thước ban đầu --> nếu mà bằng với kích thước ban đầu tức là nó sẽ đóng lại
+            if (isClosed) {
+                header.style.height = 'auto';
+            }else {
+                header.style.height = null;
+            }
+        }
+
+ 
+        // Tự động đóng khi chọn menu
+            // Lấy ra tất cả các thẻ a có href là dấu "#"
+        var menuItems = document.querySelectorAll('#nav li a[href*="#"]');
+        for (var i = 0; i < menuItems.length; i++) {
+            var menuItem = menuItems[i];
+
+            menuItem.onclick = function (event) {
+                // Nếu thẻ a đó có anh chị em liền kề và anh chị em liền kề nó có class là subvan hay không nếu có thì lưu nó vào biến vừa tạo
+                var isParentMenu = this.nextElementSibling && menuItem.nextElementSibling.classList.contains('subnav')
+                if (isParentMenu) {
+                    // Tức là nếu là parentMenu nó sẽ bỏ đi hành vi mặc định đó chính là load lại trang đấy
+                    event.preventDefault();
+                }else {
+                    // Và ngược lại nó sẽ load lại và ẩn menu đi
+                    header.style.height = null;
+                }
+            }
+        }
+
+    </script>
+
+    <!-- 
+        Cách thêm 1 class nữa trong js nhờ cửa sổ console là: tên class.classList.add('tên class muốn thêm')
+            Ví dụ: modal.classList.add('open')
+     -->
+
+
+</body>
+
+</html>

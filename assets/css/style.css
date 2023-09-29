@@ -1,0 +1,772 @@
+/* Resert CSS */
+* {
+    padding: 0;
+    /* Mặc định margin của cửa sổ trình duyệt là 8px */
+    margin: 0;
+    /* Loại bỏ việc phải tính toán kích thước khi chúng ta thêm border, padding,....bị làm tăng kích thước element*/
+    box-sizing: border-box;
+}
+
+html {
+    /* Xét phông chữ cho tất các thẻ có chữ */
+    font-family: Arial, Helvetica, sans-serif;
+    /* Sans-serif: nó là chủng form - nếu 2 form đằng trc ko có trên máy tính thì nó sẽ tự tìm form chữ ko chân có chủng là sans-serif */
+    scroll-behavior: smooth;
+    /* Cách làm hiệu ứng link tới đẹp hơn nhờ thuộc tính mới
+        (sờ cu) scroll: hành động cuộn
+        (bi hây bi hờ) behavior: hành vi khi muộn
+        smooth: trơn tru
+    */
+}
+
+   
+ 
+
+/* 
+    Khi thẻ con dùng display: float --> thì thằng thẻ cha sẽ ko ôm chọn được thẻ con 
+        +) Cách sửa 1:
+            +) Tạo 1 class tên là clear ở dưới cùng của khối cha
+            +) css cho class 1 thuộc tính là -->   clear: both để nó sửa lại 
+        +) Cách sửa 2:
+            +) Thêm 1 thuộc tính overflow: hidden  -->  vào thẻ cha để nó fix được lỗi khi thẻ con có kiểu display: float
+*/
+
+/* Common: class chung cho nhiều class */
+.clear {
+    clear: both;
+}
+
+/* 
+    Nếu muốn dùng thuộc tính: !important thì nên tạo riêng ra 1 class - chứ ko nên dùng nó thằng vào class đang CSS như thế mai sau khi muốn sửa sẽ rất khó
+*/
+.text-white {
+    color: #fff !important;
+}
+
+.text-center {
+    text-align: center !important;
+}
+
+.row {
+    margin: 0 -16px;
+}
+
+.colum-half {
+    width: 50%;
+}
+
+.colum {
+    float: left;
+    padding: 0 8px;
+}
+
+.colum-third {
+    /* Có bao nhiêu cột trong giao diện mà muốn chiều dài nó bằng nhau hết thì chỉ cần lấy là: 100 / số cột là ra */
+    width: 33.33333%;
+}
+
+.colum-full {
+    width: 100%;
+}
+
+/* Mỗi khi có thẻ con thuộc định display: float thì thẻ cha lại ko ôm được hết thẻ con khi đó chúng ta lại phải đặt thêm class clear hoặc thuộc tính overfllow để fix lại */
+/* Các nữa đó là: ta tạo ra phần tử giả - tức là phần tử này luôn có thuộc tính được áp dụng */
+.row::after {
+    content: "";
+    display: block;
+    /* Muốn clear: both thì bắt buộc thẻ đó phải có ddissplay: block */
+    clear: both;
+}
+
+
+/* 
+    1. Từ ngoài vào trong
+    2. Từ trên xuống dưới
+    3. Tổng quan đến chi tiết
+
+    4. Vị trí
+    5. Kích thước (width, height)
+    6. Màu Sắc
+    7. Kiểu dáng (kiểu chữ, hình tròn, hình vuông,.....)
+*/
+
+/* Main */
+#main {
+
+
+}
+
+/* 1. Header: Phần đầu */
+#header {
+    height: 47px;
+    background-color: #000;
+    /* Khi chúng ta thêm thuộc tính fixed thì mặc định tính chất block của header sẽ mất đi và ko đc kế thừa width nữa vậy lên phải chỉnh sửa lại */
+    width: 100%;
+    position: fixed;
+    /* Mặc định cho top: 0 để khi ở mọi cửa sổ trình duyệt nó đều được hiển thị chuẩn xác nhất */
+    top: 0;
+    right: 0;
+    left: 0;
+
+    /* Khi thêm 1 đối tượng position -> thì cái đối tượng position: fixed sẽ bị nổi nên hoặc chìm xuống */
+    /* Chúng ta cố 1 thuộc tính để giải quyết đó là: z-index   --> z: ở đây được hiểu là độ sâu   ---> nếu nó vẫn chưa đc nổi nên thì cứ tăng giá trị lên thôi */
+    z-index: 1;
+
+    /* responsive mobile */
+    /* overflow: hidden; */
+}
+
+/* --> 1.1 Thanh navigation: thanh điều hướng */
+#nav {
+    /* Thằng nav này nó đang là display: block nó có tính kế thừa hết chiêu dài 
+        Muốn cho nó dạng kích thước đến đâu chiếm đến đây thi ấy kiểu: inline-block
+    */
+    display: inline-block;
+}
+
+/* Tại vì trong id, class này đều có thẻ ul, li - và ul, li có kiểu dấu . ở trước vậy nên tả nỏ style dấu chấm đó thành none */
+#nav, .subnav {
+    list-style-type: none;
+}
+
+
+/* 
+    Chỉ cho các thẻ li cấp 1 có kiểu inline-block thôi còn li cấp 2 thì ko có
+    Nếu chỉ để CSS #nav li kia thì tất cả các thẻ li cấp 1 và 2 đều chịu ảnh hướng là kế thừa chiều dài từ thẻ chứa nó
+    --> Nhưng thẻ chứa nó là thẻ li chiều dài là 0 -> vậy nên khối xám sẽ ko được bao phủ hết chiều dài
+    --> Vậy nên ta phải chỉnh kiểu inline-block cho các thẻ li cấp 1 thôi - để li cấp 2 ko có gì cả để ta có thể chỉnh được width của khối xám trong class hover
+*/
+#nav > li {
+    display: inline-block;
+}
+
+#nav li {
+    position: relative;
+}
+
+#nav > li > a {
+    color: #fff;
+    /* text: chữ */
+    /* transform: chỉnh sửa */
+    text-transform: uppercase;
+}
+
+#nav li a {
+    text-decoration: none;
+    line-height: 47px;
+    padding-left: 24px;
+    padding-right: 24px;
+    /* Thẻ a này nó đang là dạng inline - vậy nên khối xám ko bao phủ được hết - ta phải chính display là inline-blook để có thể chỉnh được kích thước khối */
+    /* Ta phải chỉnh sửa display của thẻ a: đang mặc định là inline về thành block hoặc inline-block --> tức là dạng khối thì mới chuẩn */
+    /* Inline: nó ko tính chất xét theo chiều rộng và chiều cao vậy lên nó mất đi tính chất light-height ta cho ở trên -> thế nên nó ko thành được hình vuông dạng khối được */
+    display: inline-block; 
+} 
+
+
+#nav > li:hover > a {
+    color: #000;
+    background-color: #ccc;
+}
+
+#nav .subnav {
+    /*
+        Phải giữ nguyên kiểu display: none 
+            +) Tại vì:
+                +) none: ý nghĩa là ko có gì nó sẽ che dấu đi các cái mà mk đã CSS
+                +) ở dưới để block: là vì block nó mạnh hơn none -> vậy lên khi nào di chuột hover vào thì những gì ta css sẽ được hiện nên       
+    */
+    display: none;
+    min-width: 160px;
+    position: absolute;
+    background-color: #fff;
+    /* Ghi như này để căn chỉnh cho đúng chuẩn - tỷ lệ */
+    top: 100%;
+    left: 0;
+    box-shadow: 0 4px 10px 0 rgba(0,0,0,0.2), 0 4px 20px 0 rgba(0,0,0,0.19);
+}
+
+#nav .nav-icon {
+    font-size: 14px;
+}
+
+#header .search-btn {
+    float: right;
+    padding: 0 24px;
+}
+
+#header .search-btn .search-icon {
+    color: #fff;
+    line-height: 47px;
+}
+
+#header .search-btn:hover {
+    background-color: #f44336;
+    color: #fff;
+    /* Cursor: thay đổi kiểu con trỏ chuột trên màn hình của chúng ta */
+    cursor: pointer;
+}
+
+/* responsive mobile menu */
+#header .mobile-menu-btn {
+    float: right;
+    padding: 0 24px;
+    color: #fff;
+    line-height: 47px;
+    display: none;
+}
+
+#header .mobile-menu-btn:hover {
+    color: #000;
+    background-color: #ccc;
+}
+
+/* css id-nav có thằng con là thẻ li -) và thằng li này có thằng con là class subnav thì sẽ được hover hiện ra khi ấn đúng thẻ cha li của subnav */
+/* Khi di chuột vào thẻ li có thằng cha là nav - nhưng thằng li này nó phải đúng là cha của thằng subnav thì - thằng subnav nó mới được hiện ra */
+#nav li:hover .subnav {
+    display: block;
+}
+
+#nav .subnav a {
+    color: #000;
+    padding: 8px 16px;
+    line-height: 22.500px;
+}
+
+#nav .subnav li:hover a {
+    background-color: #ccc;
+    /* width: 100%; */
+    display: block;
+    color: #000;
+}
+
+/* --> 1.2: Phần slider */
+#slider {
+    /* Thằng header: postion = fixed vậy lên vị trí của thằng header đang có nó sẽ nhường lại cho thằng slider như vậy css sẽ ko được chuẩn nữa
+    thế nên ta muốn nó được chuẩn thì ta sẽ margin-top cho thằng slider bằng vs kích thước chiều dọc thằng header 
+    thì nó sẽ CSS dở xuống
+    */
+    margin-top: 47px;
+     
+    /* 
+        padding-top: 50%
+            +) Tức là chúng ta dùng padding đệm thêm 50% của chính nó --> để tạo ra chiều cao 
+            +) Cái phần được đệm thêm đấy nó sẽ là chiều cao của bức ảnh khi chúng ta thêm ảnh vào
+            +) Và chiều cao này nó sẽ bị thay đổi theo chiều dài cửa cửa sổ trình duyệt
+    */
+    padding-top: 50%;
+    background-image: url('../img/slider1.jpg');
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center top;
+    position: relative;
+}
+ 
+#slider .text-content {
+    position: absolute;
+    bottom: 0;
+    padding: 32px 16px;
+    /* left: 50%;
+    transform: translateX(-50%); */
+
+    /* left: 0;
+    right: 0; */
+
+    width: 100%;
+    text-align: center;
+}
+
+#slider .text-heading {
+    color: #fff;
+    padding: 10px 0;
+    /* Giảm độ dầy của chữ đi cho đúng web mẫu - nhờ thuộc tính font-weight */
+    font-weight: 400;
+    font-size: 24px;
+}
+
+#slider .text-descript {
+    color: #fff;
+    padding: 15px 0;
+    font-size: 15px;
+}
+
+
+/* 2. Phần Content: nội dung */
+#content {
+
+}
+
+/* 2.1 The Band - About section: phần about */
+/* --> Phần nội dung: descretion */
+#content .content-section {
+    padding: 64px 16px;
+    width: 800px;
+    /* 
+        Responsive: trên cửa số trình duyệt đang bị cứng là 800px nếu cửa sổ trình duyệt nhỏ hơn 800px nó sẽ bị trọc ra
+        vậy lên ta áp dụng: 
+            +) Nếu cửa số trình duyệt có chiều dài 800px hoặc lớn hơn 800px nó sẽ áp dụng thuộc tính width: 800px
+            +) Nhưng nếu của sổ trình duyệt nhỏ hơn 800px nó sẽ áp dụng width: 100% tức là full width cửa sổ màn hình 
+    */
+    max-width: 100%;
+    margin-left: auto;
+    margin-right: auto;
+    margin-bottom: 48px;
+}
+
+.content-section .section-heading {
+    margin: 10px 0;
+    text-align: center;
+    /* Làm chữ mỏng đi */
+    font-weight: 400;
+    /* Dãn khoảng cách chữ */
+    letter-spacing: 4px;
+    font-size: 30px;
+}
+
+.content-section .section-sub-heading {
+    margin: 15px 0;
+    /* Làm cho chữ nghiêng */
+    font-style: italic;
+    /* Làm trong suốt chữ đi */
+    opacity: 0.60;
+    text-align: center;
+    font-size: 15px;
+}
+
+.content-section .about-text {
+    margin: 15px 0;
+    /* Làm cho 2 mép văn bản thẳng tắp nhau */
+    text-align: justify;
+    /* Làm dãn dòng ra nhờ light-height */
+    line-height: 1.5;
+    font-size: 15px;
+}
+
+/* --> Phần member: các thành viên */
+#content .member-list {
+    padding-top: 32px;
+    padding-bottom: 32px;
+}
+
+/* .member-list .member-item {
+    Đẩy hết các item về bên trái của thẻ không gian chứa nó 
+    float: left;
+    width: 33.33333%;
+    text-align: center;
+} */
+
+.member-list .member-item .member-name {
+    margin: 15px 0;
+}
+
+.member-list .member-item .member-img {
+    margin-bottom: 16px;
+    width: 60%;
+    /* Bo góc của ảnh */
+    border-radius: 4px
+}
+
+
+/* 2.2 Tour Dates - Tour Section: phần tour */
+/* --> Phần bán vé: tickets-list */
+.tour-section {
+    background-color: #000;
+}
+
+.content-section .tickets-list {
+    background-color: #fff;
+    border: 1px solid #ccc;
+    color: #757575;
+    list-style-type: none;
+    margin-top: 40px;
+}
+
+.tickets-list .tickets-item {
+    padding: 8px 16px;
+    border-bottom: 1px solid #ddd;
+    font-size: 15px;
+}
+
+.tickets-list .Soul-out {
+    margin-left: 16px;
+    /* Đệm trên dưới làm sao phải cân nhau - nếu đệm lệch iếc những cái í ko nên học */
+    padding: 3px 4px;
+    color: #fff;
+    background-color: #f44336;
+}
+
+.tickets-list .Quantity {
+    float: right;
+    margin-right: 16px;
+    background-color: #000;
+    padding: 0 8px;
+    color: #fff;
+    /* Kiểu bo góc - 50% của chính nó */
+    border-radius: 50%;
+    text-align: center;
+    width: 24px;
+    height: 24px;
+    line-height: 24px;
+    /* 
+        Mẹo là: margin: số dương thì nó đẩy lùi xuống dưới
+                margin: số âm thì nó đẩy lùi nên trên
+    */
+    margin-top: -3px;
+}
+
+
+/* --> Phần vị trí trình diễn: places-list */
+.places-list {
+    padding: 32px 8px;
+    overflow: hidden;
+}
+
+.places-list .place-item {
+    /* Cho kích thước 3 thằng này bằng nhau - nếu có bao nhiêu thằng đi nữa cứ lấy 100 / số lượng -> xog gán đó là độ dài của chúng */
+    margin-bottom: 16px;
+}
+
+.places-list .place-img {
+    /* Width: 100% để nó lấy được hết kích thước mà vừa bị chia ra và nó có thể nhận được */
+    width: 100%;
+    /* Do thằng img nó đang có tính chất inline nên đổi lại thành block cho ko bị khoảng cách dưới nữa */
+    display: block
+}
+
+.places-list .place-img:hover {
+    opacity: 0.60;
+}
+
+.places-list .place-body {
+    background-color: #fff;
+    padding: 16px 16px;
+    font-size: 15px;
+}
+
+.places-list .place-heading {
+    font-size: 15px;
+    font-weight: 600;
+}
+
+.places-list .place-time {
+    margin: 15px 0;
+    opacity: 0.60;
+}
+
+.places-list .place-descretion {
+    margin: 15px 0;
+    line-height: 1.5;
+}
+
+.places-list .place-buy-btn {
+    padding: 11px 16px;
+    background-color: #000;
+    color: #fff;
+    /* Xoá dấu gạch chân ở bên dưới chữ */
+    text-decoration: none;
+    /* 
+        Là do thẻ a đang có kiểu inline -> nếu nó padding là nó ko chọc đc vào lớp khối bên ngoài -> nó cứ chọc thẳng nên vào phần content
+        --> Vậy nên ta chỉnh lại thành inline-block
+        --> Nếu để là block: nó sẽ lấy ra hết chiều dài mà nó có thể chiếm được như thế sẽ ko đúng
+        --> Thế nên là để inline-block thì chiều dài và rộng của ta khai báo đến đâu thì chỉ có thể chiếm đến đấy
+    */
+    display: inline-block;
+    border: none;
+    cursor: pointer;
+}
+
+.places-list .place-buy-btn:hover {
+    background-color: #cccc;
+}
+
+ 
+/* 2.3. Contact: phần Contact */
+/* ---> Phần info: thông tin liên hệ */
+.contact-content {
+    margin-bottom: 32px;
+    overflow: hidden;
+    padding: 32px 15px 0;
+}
+
+.contact-info {
+    font-size: 18px;
+    line-height: 1.5;
+}
+
+/* Nên đặt là with để tăng chiều dài icon ra --> Mai sau nhỡ đâu có những icon kích thước khác nhau  --> nếu đặt mà margin thì khả năng cao các chữ sẽ ko được thẳng hàng */
+/* 
+    Kiểu bên dưới là kiểu CSS Selector nâng cao
+        --> CSS tất cả các class có chữ ti-
+        --> CSS [class có tên là ti-]  
+        --> Nhớ là phải mở ngoặc [ ]
+ */
+.contact-info i[class*="ti-"] {
+    width: 30px;
+    /* 
+        Mặc định display của nó đang là inline
+        --> Tại vì ko đặt là block là vì:
+            +) Nó sẽ kế thừa full chiều dài của thằng chứa nó 
+            +) Và mỗi thằng icon nó lại sẽ bị nhẩy xuống 1 dòng tại vì nó là dạng khối mà
+        ----> Còn đặt là inline-block là vì:
+            +) Kích thước mình đặt hoặc nó có được phạm vi đến đâu thì chỉ có đến đấy thôi
+            +) Và vẫn có tính chất của inline nữa thế nên là ko bị nhảy icon lung tung
+            +) Và lại có thể CSS được với các top, right, left........
+    */
+    display: inline-block;
+}
+
+.contact-info p a {
+    opacity: 0.8;
+}
+
+.contact-info p:hover a {
+    opacity: 1;
+}
+
+
+/* ---> Phần info-form: phần để liên hệ */
+.contact-form {
+    font-size: 15px;
+}
+
+.contact-form .form-control {
+    padding: 10px;
+    width: 100%;
+    border: 1px solid #ccc
+}
+
+.contact-form .contact-colum {
+    margin-bottom: 8px;
+}
+
+.contact-form .contact-btn {
+    margin-top: 16px;
+    background: #000;
+    padding: 12px 17px;
+    color: #fff;
+    border: none;
+    float: right;
+    margin-right: -7px;
+}
+
+.contact-form .contact-btn:hover {
+    background-color: #ccc;
+    color: #000;
+    cursor: pointer;
+}
+
+
+/* 2.4. Map Section: Phần map ảnh */
+/* Vì thằng img nó nằm trong thẻ div vậy nên nó sẽ kế thừa 100% chiều dài màn hình rồi ta cần chỉnh sửa lại lại with bằng 100% cho thẻ img
+    là vì để khi nào co kéo màn hình thì ảnh luôn luôn được full kích thước ảnh chứ ko bị mất đi
+
+*/
+.map-section img {
+    width: 100%;
+    /* 
+        filter có nghĩa là lọc sáng + màu sắc, giống như ý nghĩa filter trong nhiếp ảnh. Bằng cách sử dụng filter trên các phần tử - (chủ yếu sử dụng với phần tử ảnh) - giúp chúng ta biến đổi màu sắc và một số hiệu ứng trước khi phần tử đó được hiện thị.
+    */
+    filter: grayscale(50%);
+}
+
+
+/* 3. Phần Footer: phần cuối website */
+#footer {
+    padding: 64px 16px;
+    text-align: center;
+}
+
+#footer .social-icon {
+    /* icon chỉ có thể đặt font-size để tăng kích thước thôi chứ ko đặt được width hoặc height */
+    font-size: 24px;
+    cursor: pointer;
+}
+
+#footer .socials-list a {
+    color: rgba(0,0,0,0.6);
+    text-decoration: none;
+}
+
+#footer .copyright {
+    font-size: 15px;
+    margin: 15px 0;
+    color: rgba(0,0,0,0.6);
+}
+
+#footer .copyright a {
+    color: rgba(0,0,0,0.6);
+}
+
+
+
+/* 10. Phần modal: phần mà ấn vào nút buy ticker nó sẽ hiện ra 1 phần mới nó được gọi là modal */
+/* Phần modal này nó chiếm cả cửa sổ trình duyệt của chúng ta - chiếm luôn cả phần overlay lớp phủ nữa */
+/* modal này: mỗi khi ấn hiện ra nó dính luôn trên cửa sổ trình duyệt vậy nên position: fixed */
+.modal {
+    position: fixed;
+    /* 4 thuọc tính này cho bằng 0 là vì: để nó kéo dài được ra phủ kín hết màn hình */
+    top: 0;
+    right: 0;
+    left: 0;
+    bottom: 0;
+    /*  */
+    /* Khi Modal được hiển thị nên thì nó sẽ có 1 lớp overlay hơi mờ mờ 1 chút */
+    background-color: rgba(0,0,0,0.4);
+    justify-content: center;
+    align-items: center;
+    /* Tạm thời ẩn nó đi */
+    display: none;
+}
+
+.modal.open {
+    display: flex;
+}
+
+.modal .modal-container {
+    background-color: #fff;
+    position: relative;
+    /* Tức là chiều ngang bằng 900 */
+    width: 900px;
+    /* Bây giờ sẽ đi responsive cho nó mỗi khi kéo nhỏ màn hình lại nó sẽ vẫn hở ra khoảng trống 2 bên viền chứ ko phải là tràn viền */
+    max-width: calc(100% - 40px);
+    /* --> 100% chiều dài - độ kẽ hỡ của 2 bên cộng lại */
+
+    /* Dùng thuộc tính CSS là: animation để lấy ra được keyframes của chúng ta --> xong đến kiểu chuyển động  ---> thời gian chạy  */
+    animation: modalFadeIn ease 0.4s;
+}
+
+/* 10.1. Phần header: Phần đầu */
+.modal .modal-header {
+    height: 129px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: #009688;
+    font-size: 30px;
+    color: #fff;
+    font-weight: 400;
+    letter-spacing: 4px;
+}
+
+.modal .modal-header-icon {
+    margin-right: 12px;
+}
+
+.modal .modal-header-close {
+    position: absolute;
+    right: 0;
+    top: 0;
+    color: #fff;
+    padding: 16px;
+}
+
+.modal .modal-header-close:hover {
+    color: #000;
+    background-color: #ccc;
+}
+
+
+/* 10.2. Phần body: Phần thân */
+.modal-body {
+    padding: 0 16px;
+}
+
+.modal-body .modal-label {
+    display: block;
+    margin: 15px 0;
+}
+
+.modal-body .modal-input {
+    width: 100%;
+    border: 1px solid #ccc;
+    padding: 12px;
+}
+
+.modal-body .modal-button {
+    display: block;
+    padding: 18px;
+    margin: 16px 0;
+    width: 100%;
+    background-color: #009688;
+    font-size: 15px;
+    border: none;
+    color: #fff;
+    /* Làm đậm chữ nên */
+    text-transform: uppercase;
+}
+
+.modal-body .modal-button:hover {
+    color: #000;
+    background-color: #ccc;
+
+    /* Có thể làm theo cách khác cho đẹp là: đặt opacity: độ mờ mỗi khi ấn vào */
+    /* opacity: 0.8; */
+}
+
+
+/* 10.3. Phần footer: phần cuối */
+.modal-footer {
+    overflow: hidden;
+    padding: 16px 16px;
+}
+
+.modal-footer .footer-close {
+    font-size: 15px;
+    padding: 10px 10px;
+    background-color: #F44336;
+    border: none;
+    color: #fff;
+    cursor: pointer;
+    text-align: center;
+}
+
+.modal-footer .footer-close:hover {
+    color: #000;
+    background-color: #ccc;
+}
+
+.modal-footer .footer-need {
+    float: right;
+}
+
+.modal-footer .footer-help {
+    color: #2196F3;
+    cursor: pointer;
+}
+ 
+
+/*10.4. Tạo chuyển động của modal */
+/* 
+    Tác dụng của keyframes:
+        +) Tạo ra liên tiếp các chuyển động của hình ảnh tĩnh
+        +) Kiểu như cơ chế chiếu phim là 24 hình trên giây như thế nó sẽ tạo ra được các chuyển động mượt mà
+        +) Cách sử dụng:
+            @keyframes tên_cần đặt 
+                from {      --> từ đâu
+
+                }
+                to {        --> đến đâu
+
+                }
+*/
+@keyframes modalFadeIn {
+    from {
+        transform: translateY(-300px);
+        /* Lúc đầu opacity: 0 --> tức là trong suốt */
+        opacity: 0;
+    }
+    to {
+        transform: translateY(0);
+        /* Lúc đầu opacity: 1 --> tức là hiện hẳn ra */
+        opacity: 1;
+    }
+}
+
+
+
+
+
+
+
+
+
+

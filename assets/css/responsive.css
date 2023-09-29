@@ -1,0 +1,109 @@
+/* Mobile */
+@media (max-width: 46.1875em) {
+    .mt-16 {
+        margin-top: 16px;
+    }
+
+    .ml-10 {
+        margin-left: -8px;
+    }
+
+    .full-width {
+        width: 100%;
+    }
+
+    #nav {
+        display: block;
+    }
+
+    #nav > li {
+        display: block;    }
+ 
+    /* Sửa cho menu chỉ cần ấn dìa bên cạnh nó cũng ẩn được đi r */
+    #nav li a {
+        display: block;
+        padding: 1px 24px;
+    }
+
+    /* CSS thẻ li đầu tiên cho nó cái display khác bọn kia để ko bị ảnh hưởng tới cái mobile-menu */
+    #nav > li:first-child {
+        display: inline-block;
+    }
+
+    #nav .subnav {
+        position: initial;
+        background-color: #333;
+    }
+
+    #nav .subnav a {
+        color: #fff;
+        /* Muốn kí hiệu là thẻ con cho ngta hiểu thì nên lùi vào độ 16px */
+        /* Tối thiểu chiều cao phải là: 42-48px để khi người dùng ấn tay vào nó sẽ dễ ấn hơn */
+        padding: 5px 41px;
+    }
+
+    #header {
+        overflow: hidden;
+    }
+
+    #header .search-btn {
+        display: none;
+    }
+ 
+    #header .mobile-menu-btn {
+        position: absolute;
+        top: 0;
+        right: 0;
+        display: inline-block;
+    }
+
+    #content .s-colum {
+        width: 100%;
+        float: none;
+    }
+
+    #content .member-list {
+        padding: 32px 0 0 0;
+    }
+    
+    .colum-responsive {
+        width: 100%;
+        float: none;
+    }
+}
+
+
+/* Sửa lại trên ipad và smartphone */
+/* ---> Đây nó đươc gọi UX trải nghiệm người dùng - chúng ta cố gắng CSS cho các nút mà để ấn hay nhập í thì trong khoảng chiều cao là 42 - 48 cố gắng là vậy để người dùng có thể dễ ấn */
+@media (max-width: 63.9375em) {
+    .places-list .place-buy-btn {
+        padding: 16px 16px;
+    }
+ 
+    .contact-form .form-control {
+        padding: 15px;
+    }
+
+    .contact-form .contact-btn {
+        padding: 16px 17px ;
+        /* Bỏ đi cái thuộc tính mặc định của thẻ này khi được trình duyệt ắp vào - áp dụng trên các trình duyệt bình thường */
+        appearance: none;
+        /* Thằng weekeit này áp dụng riêng cho safari */
+        -webkit-appearance: none;
+    }
+
+    .contact-info {
+        line-height: 2.0;
+    }
+
+    #footer .social-icon {
+        margin: 0 8px;
+    }
+
+    #footer .copyright a {
+        padding: 13px 0;
+        /* Cho nó là cái inline-block để nó có thể đẩy xuống vừa vặn cho đẹp   --> chứ để mỗi là inline thì tính nguyên tắc của nó là trên cùng một dòng */
+        display: inline-block;
+    }
+
+}
